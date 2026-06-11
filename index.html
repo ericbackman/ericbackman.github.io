@@ -1,61 +1,325 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eric Backman</title>
-  <meta name="description" content="Eric Backman — software engineer. Projects in agentic AI, data, and games.">
-  <style>
-    :root {
-      --bg: #0b0c10; --panel: #15171d; --line: #262a34;
-      --text: #e9eaee; --muted: #9aa0ad; --accent: #e8b54a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; background: radial-gradient(900px 400px at 50% -80px, #171a21 0%, transparent 70%), var(--bg);
-      color: var(--text); font: 16px/1.5 'Segoe UI', system-ui, sans-serif;
-      min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 32px 16px;
-    }
-    main { max-width: 560px; width: 100%; }
-    h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -0.5px; }
-    .sub { color: var(--muted); margin: 0 0 28px; }
-    .sub a { color: var(--accent); text-decoration: none; }
-    ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-    li a {
-      display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px;
-      background: var(--panel); color: var(--text); text-decoration: none;
-      transition: border-color .15s, transform .1s;
-    }
-    li a:hover { border-color: var(--accent); transform: translateY(-1px); }
-    li a strong { display: block; }
-    li a span { color: var(--muted); font-size: 14px; }
-    footer { margin-top: 28px; color: var(--muted); font-size: 14px; }
-    footer a { color: var(--accent); text-decoration: none; }
-  </style>
+  <title>Eric Backman — Data Engineer & Applied AI</title>
+  <meta name="description" content="Data Engineer and Applied AI Specialist in Toronto. Building data pipelines and AI systems for financial risk analysis.">
+  <meta property="og:title" content="Eric Backman — Data Engineer & Applied AI">
+  <meta property="og:description" content="Data Engineer and Applied AI Specialist in Toronto. Building data pipelines and AI systems for financial risk analysis.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo">EB</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="/projects/">Apps &amp; Games</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="hero">
+    <div class="hero__grid-bg"></div>
+    <div class="hero__content">
+      <p class="hero__greeting mono">Hi, I'm</p>
+      <h1 class="hero__name">Eric Backman</h1>
+      <h2 class="hero__title">Data Scientist <span class="accent">&</span> Applied AI Specialist</h2>
+      <p class="hero__tagline">I build data pipelines and AI systems that simplify menial tasks and reduce day to day overhead.</p>
+      <div class="hero__ctas">
+        <a href="#contact" class="btn btn--primary">Get in Touch</a>
+        <a href="#experience" class="btn btn--secondary">View Experience</a>
+        <a href="/projects/" class="btn btn--secondary">Apps &amp; Games</a>
+      </div>
+      <p class="hero__keywords mono">BMO · Toronto · Data Science · Python · Java · Data Engineering · Data Analytics · Queen's B.A.Sc.</p>
+    </div>
+  </header>
+
   <main>
-    <h1>Eric Backman</h1>
-    <p class="sub">Software engineer — agentic AI, data, and games.</p>
-    <ul>
-      <li><a href="https://15.ericbackman.com">
-        <strong>The $15 Gauntlet</strong>
-        <span>Build the best NBA team with $15, then go 16-0 through history's best teams.</span>
-      </a></li>
-      <li><a href="https://dives.ericbackman.com">
-        <strong>Dive Map</strong>
-        <span>Interactive scuba dive log — sites, depths, and footage.</span>
-      </a></li>
-      <li><a href="https://datalab.ericbackman.com">
-        <strong>NBA Data Lab</strong>
-        <span>Data investigations and live tools: the Health Curse, the betting tracker, and more.</span>
-      </a></li>
-      <li><a href="https://mika.ericbackman.com">
-        <strong>Mika Backman</strong>
-        <span>Mika's portfolio.</span>
-      </a></li>
-    </ul>
-    <footer><a href="https://github.com/ericbackman">github.com/ericbackman</a></footer>
+
+    <!-- About -->
+    <section class="about section" id="about">
+      <div class="section__container">
+        <h2 class="section__title">About</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <p>I'm a data scientist and engineer based in Toronto, working at the intersection of AI systems and financial risk infrastructure. I am designing and implementing Agentic AI tools that automate and accelerate regulatory capital analysis. Agentic tools that let analysts do in minutes what used to take days.</p>
+            <p>My path started in the Canadian smart home space at Ecobee, where I built experimentation platforms and data pipelines for smart home devices. I've since moved through healthcare APIs, sensor validation, and ML model development before landing in financial risk.</p>
+          </div>
+          <div class="about__cards">
+            <div class="about__card fade-in">
+              <div class="about__card-icon mono">&gt;_</div>
+              <h3>Agentic AI</h3>
+              <p>Multi-agent orchestration systems that integrate LLMs into analyst workflows</p>
+            </div>
+            <div class="about__card fade-in">
+              <div class="about__card-icon mono">$</div>
+              <h3>Risk Domain</h3>
+              <p>FRTB SA (Fundamental Review of the Trading Book) — regulatory capital expertise that most engineers lack</p>
+            </div>
+            <div class="about__card fade-in">
+              <div class="about__card-icon mono">//</div>
+              <h3>Full Stack</h3>
+              <p>End-to-end delivery: data ingestion to API to analytics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience section" id="experience">
+      <div class="section__container">
+        <h2 class="section__title">Experience</h2>
+        <div class="timeline">
+
+          <div class="timeline__item fade-in">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3>Senior Analyst, AI Implementation</h3>
+                <span class="timeline__company mono">BMO</span>
+              </div>
+              <span class="timeline__date mono">Aug 2025 — Present</span>
+              <ul class="timeline__details">
+                <li>Leverage data science experience to build agentic AI platform. Automates the extraction, comparison, and analysis of financial metrics across multiple asset classes — reducing investigation time from days to minutes.</li>
+                <li>Designed AI-assisted analytical tools that help analysts quickly identify trends and movements in large datasets.</li>
+                <li>Added monitoring and anomaly detection for internal data systems, catching data quality issues before they hit analysts.</li>
+                <li>Developed evaluation protocols with human review loops, documenting validation results and bias analyses for each module.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item fade-in">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3>Data Scientist</h3>
+                <span class="timeline__company mono">Ecobee</span>
+              </div>
+              <span class="timeline__date mono">May 2021 — Jul 2022</span>
+              <ul class="timeline__details">
+                <li>Validated air quality sensors for next-gen smart thermostat using field trial data.</li>
+                <li>Researched Model Predictive Control for thermal controller; managed testing infrastructure.</li>
+                <li>Improved smart security model accuracy ~6% using Bayesian inference and retrained models.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item fade-in">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3>Junior Backend Developer</h3>
+                <span class="timeline__company mono">Smile CDR</span>
+              </div>
+              <span class="timeline__date mono">Nov 2020 — May 2021</span>
+              <ul class="timeline__details">
+                <li>Built FHIR-compliant data mapping APIs in Java/Spring Boot for healthcare monitoring data.</li>
+                <li>Enabled asynchronous refreshing of third-party healthcare device data.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item fade-in">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3>Data Science / Engineering Intern</h3>
+                <span class="timeline__company mono">Ecobee</span>
+              </div>
+              <span class="timeline__date mono">Dec 2018 — Jul 2019</span>
+              <ul class="timeline__details">
+                <li>Built experimentation platform enabling C++ A/B tests on thermostat devices in the field.</li>
+                <li>Designed data pipelines (Apache Beam) to clean and organize experimental data.</li>
+                <li>Identified blocking bugs causing multi-month delays; built remote testing infrastructure.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline__item fade-in">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3>Embedded QA, Test Developer Intern</h3>
+                <span class="timeline__company mono">Ecobee</span>
+              </div>
+              <span class="timeline__date mono">May 2018 — Dec 2018</span>
+              <ul class="timeline__details">
+                <li>Automated integration testing and Alexa voice detection accuracy evaluation.</li>
+                <li>Became primary point of contact for Alexa-related issues across the company.</li>
+                <li>Built audio isolation fixtures for testing in an open floor plan environment.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills section" id="skills">
+      <div class="section__container">
+        <h2 class="section__title">Skills</h2>
+        <div class="skills__grid">
+          <div class="skills__group fade-in">
+            <h3 class="skills__group-title mono">Agentic AI</h3>
+            <ul>
+              <li>GitHub Copilot — Financial risk multi-agent system</li>
+              <li>M365 Copilot — Team chatbots and prompts</li>
+              <li>Claude Desktop — Personal projects, data analysis</li>
+            </ul>
+          </div>
+          <div class="skills__group fade-in">
+            <h3 class="skills__group-title mono">Languages</h3>
+            <ul>
+              <li>Python</li>
+              <li>SQL</li>
+              <li>Java</li>
+              <li>Bash</li>
+            </ul>
+          </div>
+          <div class="skills__group fade-in">
+            <h3 class="skills__group-title mono">Data</h3>
+            <ul>
+              <li>BigQuery</li>
+              <li>PostgreSQL</li>
+              <li>MySQL</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <div class="skills__group fade-in">
+            <h3 class="skills__group-title mono">Infrastructure</h3>
+            <ul>
+              <li>Apache Beam</li>
+              <li>Dataflow</li>
+              <li>Airflow</li>
+              <li>GCP</li>
+              <li>Docker</li>
+              <li>CircleCI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects section" id="projects">
+      <div class="section__container">
+        <h2 class="section__title">Projects</h2>
+        <div class="projects__grid">
+
+          <div class="project-card fade-in">
+            <h3 class="project-card__title">NBA Data Explorer</h3>
+            <p class="project-card__desc">Personal Claude-powered repository to answer ad hoc basketball questions I have watching games with my family.</p>
+            <span class="project-card__tech mono">Python &middot; Claude &middot; pandas &middot; nba_api</span>
+            <a href="https://github.com/ericbackman/data_explorer" class="project-card__link" target="_blank" rel="noopener">GitHub &nearr;</a>
+          </div>
+
+          <div class="project-card fade-in">
+            <h3 class="project-card__title">MTG Deckbuilder</h3>
+            <p class="project-card__desc">Scanned my collection and uploaded as CSV, allowing Claude to assist in deckbuilding decisions and strategy.</p>
+            <span class="project-card__tech mono">Python &middot; Claude &middot; pandas &middot; CSV</span>
+            <a href="https://github.com/ericbackman/MTG-Deckbuilding" class="project-card__link" target="_blank" rel="noopener">GitHub &nearr;</a>
+          </div>
+
+          <div class="project-card fade-in">
+            <h3 class="project-card__title">Risk Knowledge Base (FRM Level 1)</h3>
+            <p class="project-card__desc">A personalized tutor agent to prepare me to write the FRM Level 1. Built to allow Claude to give me endless practice exam questions and enable detailed follow-up questions.</p>
+            <span class="project-card__tech mono">Claude &middot; Finance &middot; Risk &middot; FRM</span>
+          </div>
+
+          <div class="project-card fade-in">
+            <h3 class="project-card__title">Interactive Dive Map</h3>
+            <p class="project-card__desc">World map of 150+ scuba dive sites across 12 countries. Click pins to see dive details, photos, and underwater video.</p>
+            <span class="project-card__tech mono">Leaflet.js &middot; JavaScript &middot; GitHub Pages</span>
+            <a href="https://dives.ericbackman.com" class="project-card__link" target="_blank" rel="noopener">Live Map &nearr;</a>
+          </div>
+
+          <div class="project-card fade-in">
+            <h3 class="project-card__title">Job Hunting GitHub</h3>
+            <p class="project-card__desc">Had Claude ingest my old resumes and descriptions of current work, used to create new resumes and this website.</p>
+            <span class="project-card__tech mono">Claude &middot; HTML &middot; CSS &middot; Netlify</span>
+            <a href="https://github.com/ericbackman/job-hunt" class="project-card__link" target="_blank" rel="noopener">GitHub &nearr;</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="education section" id="education">
+      <div class="section__container">
+        <h2 class="section__title">Education</h2>
+        <div class="education__content fade-in">
+          <div class="education__header">
+            <h3>Queen's University</h3>
+            <span class="mono">2015 — 2020</span>
+          </div>
+          <p class="education__degree">Bachelor of Applied Science — Applied Mathematics & Computer Engineering</p>
+          <div class="education__details">
+            <span class="chip">Honours</span>
+            <span class="chip">3.77 GPA</span>
+            <span class="chip">16-mo Internship</span>
+            <span class="chip">French Immersion</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- Contact / Footer -->
+  <footer class="contact" id="contact">
+    <div class="section__container">
+      <h2 class="section__title">Get in Touch</h2>
+      <p class="contact__text">Open to data engineering, applied AI, and full-stack opportunities in Toronto or remote.</p>
+      <div class="contact__links">
+        <a href="mailto:ericbackman81@gmail.com" class="contact__link">
+          <span class="mono">email</span>
+          ericbackman81@gmail.com
+        </a>
+        <a href="tel:+14165703353" class="contact__link">
+          <span class="mono">phone</span>
+          416-570-3353
+        </a>
+        <a href="https://github.com/ericbackman" class="contact__link" target="_blank" rel="noopener">
+          <span class="mono">github</span>
+          ericbackman
+        </a>
+        <!-- <a href="https://linkedin.com/in/YOUR-HANDLE" class="contact__link" target="_blank" rel="noopener">
+          <span class="mono">linkedin</span>
+          Eric Backman
+        </a> -->
+      </div>
+      <div class="contact__footer">
+        <p>&copy; 2026 Eric Backman</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
