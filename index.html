@@ -28,7 +28,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="/projects/">Apps &amp; Games</a></li>
+        <li><a href="#live">Live</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -51,7 +51,7 @@
       <div class="hero__ctas">
         <a href="#contact" class="btn btn--primary">Get in Touch</a>
         <a href="#experience" class="btn btn--secondary">View Experience</a>
-        <a href="/projects/" class="btn btn--secondary">Apps &amp; Games</a>
+        <a href="#live" class="btn btn--secondary">Live Projects</a>
       </div>
       <p class="hero__keywords mono">BMO · Toronto · Data Science · Python · Java · Data Engineering · Data Analytics · Queen's B.A.Sc.</p>
     </div>
@@ -275,6 +275,124 @@
         </div>
       </div>
     </section>
+
+    <!-- Live Projects -->
+    <section class="section" id="live">
+      <div class="section__container">
+        <h2 class="section__title">Live</h2>
+        <p style="color:var(--text-secondary);margin-bottom:1.5rem;max-width:56ch;font-size:.95rem">Every site currently deployed — all built and managed with Claude Code.</p>
+        <input id="live-q" type="search" placeholder="Search by name, tag, or category…"
+               style="width:100%;max-width:480px;display:block;padding:.55rem 1rem;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-size:.875rem;outline:none;margin-bottom:2.5rem;transition:border-color .2s"
+               onfocus="this.style.borderColor='var(--accent)'"
+               onblur="this.style.borderColor='var(--border)'"
+               oninput="renderLive(this.value)">
+        <div id="live-out"></div>
+      </div>
+    </section>
+
+    <style>
+      .live-cat { margin-bottom: 2.5rem; }
+      .live-cat__label { font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:.85rem;font-family:'JetBrains Mono',monospace; }
+      .live-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem; }
+      .live-card { background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.55rem;transition:border-color .2s,box-shadow .2s; }
+      .live-card:hover { border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow); }
+      .live-card__head { display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem; }
+      .live-card__name { font-weight:600;font-size:.85rem;color:var(--text-primary);font-family:'JetBrains Mono',monospace;line-height:1.3; }
+      .live-card__badge { font-size:.65rem;background:var(--bg-elevated);color:var(--text-secondary);padding:1px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px; }
+      .live-card__desc { font-size:.83rem;color:var(--text-secondary);line-height:1.55;flex:1; }
+      .live-card__foot { display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-top:.1rem; }
+      .live-card__tags { display:flex;gap:.35rem;flex-wrap:wrap; }
+      .live-card__tag { font-size:.65rem;background:var(--tag-bg);color:var(--accent);padding:2px 7px;border-radius:4px;font-weight:500; }
+      .live-card__link { font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0; }
+      .live-card__link:hover { color:var(--accent-hover); }
+      .live-empty { color:var(--text-secondary);padding:3rem 0;font-size:.9rem; }
+    </style>
+
+    <script>
+    (function(){
+      var CATS = ["Games","Sports & Betting","AI & Finance","Maps","Emulation & Tabletop","Tools & Writing"];
+      var SITES = [
+        {cat:"Games", name:"15.ericbackman.com", url:"https://15.ericbackman.com",
+         desc:"NBA perfect-season challenge — draw an era and franchise, build a Big Five, go 82-0.", tags:["game","nba"]},
+        {cat:"Games", name:"cup.ericbackman.com", url:"https://cup.ericbackman.com",
+         desc:"NHL perfect season, Leafs-flavored — run the table all the way to a 16-0 Cup run.", tags:["game","nhl"]},
+        {cat:"Games", name:"october.ericbackman.com", url:"https://october.ericbackman.com",
+         desc:"MLB perfect October — a flawless 13-0 playoff run or nothing.", tags:["game","mlb"]},
+        {cat:"Games", name:"2048.ericbackman.com", url:"https://2048.ericbackman.com",
+         desc:"Merge Tiles — 2048 reimagined with a swappable merge-rule engine and live colour editor.", tags:["game","puzzle"]},
+        {cat:"Sports & Betting", name:"datalab.ericbackman.com", url:"https://datalab.ericbackman.com",
+         desc:"NBA Data Lab — sports questions answered with hard numbers from the NBA API.", tags:["data","nba"]},
+        {cat:"Sports & Betting", name:"bets.ericbackman.com", url:"https://bets.ericbackman.com",
+         desc:"BetTracker — live bet-history dashboard backed by a local SQLite database.", tags:["betting","dashboard"]},
+        {cat:"Sports & Betting", name:"sportsdb.ericbackman.com", url:"https://sportsdb.ericbackman.com",
+         desc:"Sports DB — server-rendered dashboard over the Supabase sports data layer.", tags:["data","sql"], gated:true},
+        {cat:"AI & Finance", name:"trader.ericbackman.com", url:"https://trader.ericbackman.com",
+         desc:"Paper Trader — Claude's daily portfolio decisions, trade log, and full written reasoning. Updated each market day.", tags:["ai","trading","finance"]},
+        {cat:"Maps", name:"dives.ericbackman.com", url:"https://dives.ericbackman.com",
+         desc:"Interactive scuba dive map — 150+ sites across 12 countries with pins, photos, and underwater video.", tags:["map","diving"]},
+        {cat:"Emulation & Tabletop", name:"arcade.ericbackman.com", url:"https://arcade.ericbackman.com",
+         desc:"Retro arcade hub — Link's Awakening DX and friends, clean-built from source decomps.", tags:["emulation","retro"], gated:true},
+        {cat:"Emulation & Tabletop", name:"pokemon.ericbackman.com", url:"https://pokemon.ericbackman.com",
+         desc:"Pokemon hub — byte-perfect LeafGreen compiled from the pret decomp, playable in-browser.", tags:["emulation","pokemon"], gated:true},
+        {cat:"Emulation & Tabletop", name:"commander.ericbackman.com", url:"https://commander.ericbackman.com",
+         desc:"MTG Commander web play-table for the pod — multiplayer rooms, card search via Scryfall.", tags:["mtg","multiplayer"], gated:true},
+        {cat:"Emulation & Tabletop", name:"dm.ericbackman.com", url:"https://dm.ericbackman.com",
+         desc:"Roll20-lite for D&D — scene slideshow, fog-of-war reveal, and five pregenerated characters.", tags:["dnd","tabletop"]},
+        {cat:"Tools & Writing", name:"frm.ericbackman.com", url:"https://frm.ericbackman.com",
+         desc:"FRM Level 1 study system — an agentic AI tutor delivering practice questions and deep follow-ups.", tags:["study","finance","ai"]},
+        {cat:"Tools & Writing", name:"research.ericbackman.com", url:"https://research.ericbackman.com",
+         desc:"Private research library — phone-readable archive of every Claude-generated research note.", tags:["notes","ai"], gated:true},
+        {cat:"Tools & Writing", name:"rickleberry.ericbackman.com", url:"https://rickleberry.ericbackman.com",
+         desc:"Weekly newsletter auto-generated from build sessions and git history.", tags:["newsletter","writing"]},
+      ];
+
+      function el(tag, cls){ var e=document.createElement(tag); if(cls) e.className=cls; return e; }
+
+      function buildCard(s){
+        var card = el('div','live-card');
+        var head = el('div','live-card__head');
+        var name = el('span','live-card__name'); name.textContent = s.name;
+        head.appendChild(name);
+        if(s.gated){ var badge=el('span','live-card__badge'); badge.textContent='private'; head.appendChild(badge); }
+        card.appendChild(head);
+        var desc = el('p','live-card__desc'); desc.textContent = s.desc;
+        card.appendChild(desc);
+        var foot = el('div','live-card__foot');
+        var tags = el('div','live-card__tags');
+        s.tags.forEach(function(t){ var tag=el('span','live-card__tag'); tag.textContent=t; tags.appendChild(tag); });
+        foot.appendChild(tags);
+        var link = el('a','live-card__link');
+        link.href = s.url; link.target='_blank'; link.rel='noopener'; link.textContent='Live ↗';
+        foot.appendChild(link);
+        card.appendChild(foot);
+        return card;
+      }
+
+      window.renderLive = function(q){
+        q = (q||'').toLowerCase().trim();
+        var out = document.getElementById('live-out');
+        while(out.firstChild) out.removeChild(out.firstChild);
+        var filtered = SITES.filter(function(s){
+          return !q || (s.name+' '+s.desc+' '+s.cat+' '+s.tags.join(' ')).toLowerCase().indexOf(q) !== -1;
+        });
+        if(!filtered.length){
+          var msg = el('p','live-empty'); msg.textContent = 'No projects match that search.'; out.appendChild(msg); return;
+        }
+        var byCat = {};
+        filtered.forEach(function(s){ (byCat[s.cat]=byCat[s.cat]||[]).push(s); });
+        CATS.filter(function(c){ return byCat[c]; }).forEach(function(cat){
+          var catDiv = el('div','live-cat');
+          var label = el('div','live-cat__label'); label.textContent = cat; catDiv.appendChild(label);
+          var grid = el('div','live-grid');
+          byCat[cat].forEach(function(s){ grid.appendChild(buildCard(s)); });
+          catDiv.appendChild(grid);
+          out.appendChild(catDiv);
+        });
+      };
+
+      document.addEventListener('DOMContentLoaded', function(){ window.renderLive(''); });
+    })();
+    </script>
 
     <!-- Education -->
     <section class="education section" id="education">
