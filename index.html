@@ -253,7 +253,7 @@
 
           <div class="project-card fade-in">
             <h3 class="project-card__title">Interactive Dive Map</h3>
-            <p class="project-card__desc">World map of 150+ scuba dive sites across 12 countries. Click pins to see dive details, photos, and underwater video.</p>
+            <p class="project-card__desc">World map of 147 logged dives across 11 countries. Click pins to see dive details, photos, and underwater video.</p>
             <span class="project-card__tech mono">Leaflet.js &middot; JavaScript &middot; GitHub Pages</span>
             <a href="https://dives.ericbackman.com" class="project-card__link" target="_blank" rel="noopener">Live Map &nearr;</a>
           </div>
@@ -310,7 +310,11 @@
 
     <script>
     (function(){
-      var CATS = ["Games","Sports & Betting","AI & Finance","Maps","Emulation & Tabletop","Tools & Writing"];
+      // Listing a site here is a PUBLIC disclosure: this page is indexed, and an
+      // entry ties that site and its purpose to my name. A gate protects a site's
+      // contents, not the fact that it exists. Anything personal, finance-related,
+      // or published under a different name belongs in the private link-hub instead.
+      var CATS = ["Games","Sports Data","Maps","Emulation & Tabletop","Tools & Writing"];
       var SITES = [
         {cat:"Games", name:"15.ericbackman.com", url:"https://15.ericbackman.com",
          desc:"NBA perfect-season challenge — draw an era and franchise, build a Big Five, go 82-0.", tags:["game","nba"]},
@@ -320,16 +324,12 @@
          desc:"MLB perfect October — a flawless 13-0 playoff run or nothing.", tags:["game","mlb"]},
         {cat:"Games", name:"2048.ericbackman.com", url:"https://2048.ericbackman.com",
          desc:"Merge Tiles — 2048 reimagined with a swappable merge-rule engine and live colour editor.", tags:["game","puzzle"]},
-        {cat:"Sports & Betting", name:"datalab.ericbackman.com", url:"https://datalab.ericbackman.com",
+        {cat:"Sports Data", name:"datalab.ericbackman.com", url:"https://datalab.ericbackman.com",
          desc:"NBA Data Lab — sports questions answered with hard numbers from the NBA API.", tags:["data","nba"]},
-        {cat:"Sports & Betting", name:"bets.ericbackman.com", url:"https://bets.ericbackman.com",
-         desc:"BetTracker — live bet-history dashboard backed by a local SQLite database.", tags:["betting","dashboard"]},
-        {cat:"Sports & Betting", name:"sportsdb.ericbackman.com", url:"https://sportsdb.ericbackman.com",
+        {cat:"Sports Data", name:"sportsdb.ericbackman.com", url:"https://sportsdb.ericbackman.com",
          desc:"Sports DB — server-rendered dashboard over the Supabase sports data layer.", tags:["data","sql"], gated:true},
-        {cat:"AI & Finance", name:"trader.ericbackman.com", url:"https://trader.ericbackman.com",
-         desc:"Paper Trader — Claude's daily portfolio decisions, trade log, and full written reasoning. Updated each market day.", tags:["ai","trading","finance"]},
         {cat:"Maps", name:"dives.ericbackman.com", url:"https://dives.ericbackman.com",
-         desc:"Interactive scuba dive map — 150+ sites across 12 countries with pins, photos, and underwater video.", tags:["map","diving"]},
+         desc:"Interactive scuba dive map — 147 logged dives across 11 countries with pins, photos, and underwater video.", tags:["map","diving"]},
         {cat:"Emulation & Tabletop", name:"arcade.ericbackman.com", url:"https://arcade.ericbackman.com",
          desc:"Retro arcade hub — Link's Awakening DX and friends, clean-built from source decomps.", tags:["emulation","retro"], gated:true},
         {cat:"Emulation & Tabletop", name:"pokemon.ericbackman.com", url:"https://pokemon.ericbackman.com",
@@ -339,11 +339,7 @@
         {cat:"Emulation & Tabletop", name:"dm.ericbackman.com", url:"https://dm.ericbackman.com",
          desc:"Roll20-lite for D&D — scene slideshow, fog-of-war reveal, and five pregenerated characters.", tags:["dnd","tabletop"]},
         {cat:"Tools & Writing", name:"frm.ericbackman.com", url:"https://frm.ericbackman.com",
-         desc:"FRM Level 1 study system — an agentic AI tutor delivering practice questions and deep follow-ups.", tags:["study","finance","ai"]},
-        {cat:"Tools & Writing", name:"research.ericbackman.com", url:"https://research.ericbackman.com",
-         desc:"Private research library — phone-readable archive of every Claude-generated research note.", tags:["notes","ai"], gated:true},
-        {cat:"Tools & Writing", name:"rickleberry.ericbackman.com", url:"https://rickleberry.ericbackman.com",
-         desc:"Weekly newsletter auto-generated from build sessions and git history.", tags:["newsletter","writing"]},
+         desc:"FRM Level 1 study system — an agentic AI tutor delivering practice questions and deep follow-ups.", tags:["study","ai"]},
       ];
 
       function el(tag, cls){ var e=document.createElement(tag); if(cls) e.className=cls; return e; }
