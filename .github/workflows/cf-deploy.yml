@@ -1,7 +1,7 @@
 name: Deploy to Cloudflare Pages
 
-# Dual-serve: GitHub Pages stays live at ericbackman.github.io;
-# this additionally publishes to ericbackman.com.
+# GitHub Pages serves the redirect at ericbackman.github.io; this publishes the
+# same redirect to the parked Pages project (portfolio-94i.pages.dev).
 
 on:
   push:
